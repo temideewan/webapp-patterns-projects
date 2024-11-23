@@ -44,14 +44,15 @@ function renderList() {
 }
 
 document.addEventListener('keydown', (event) => {
-  console.log('Key down');
-  console.log(event.ctrlKey);
-  console.log(event.key === 'k');
-  
   
   if(event.ctrlKey && event.key === 'k'){
     event.preventDefault();
     const command = new Command(Commands.ADD);
+    CommandExecutor.execute(command);
+  }
+  if(event.metaKey && event.key === 'z'){
+    event.preventDefault();
+    const command = new Command(Commands.UNDO);
     CommandExecutor.execute(command);
   }
 })
